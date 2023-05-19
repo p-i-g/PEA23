@@ -7,19 +7,16 @@ class Intro(Slide):
     def construct(self):
         title = Text("Numerical Modelling")
         self.play(Create(title))
-        self.wait(1)
         self.next_slide()
 
         title.generate_target()
         title.target.shift(0.3 * UP)
 
         self.play(MoveToTarget(title))
-        self.wait(1)
 
         subtitle = Tex(r"Who? ", "What?", " Why? ", "Where? ", "When? ", "How? ", font_size=32)
         subtitle.shift(0.3 * DOWN)
         self.play(Create(subtitle))
-        self.wait(1)
         self.next_slide()
         self.play(FadeOut(title))
 
@@ -89,3 +86,32 @@ class WhereWhenWhy(Slide):
 
         label = Tex(f'({root:.3f}, {root:.3f})', font_size=24).next_to(dot, buff=0.5)
         self.play(Create(label))
+
+        self.next_slide()
+
+        self.play(*[FadeOut(m) for m in self.mobjects])
+
+        how = Tex("How?", font_size=72)
+        self.play(Create(how))
+
+        self.next_slide()
+        self.play(FadeOut(how))
+
+        calc = Tex("Before that: calculus in 5 minutes", font_size=72)
+        self.play(Create(calc))
+        self.next_slide()
+        self.play(FadeOut(calc))
+
+
+class Derivatives(Slide):
+    def construct(self):
+        derivatives = Tex("Derivatives", font_size=72)
+        self.play(Create(derivatives))
+
+        title = Title("Derivatives", include_underline=False)
+        self.play(Transform(derivatives, title))
+        self.next_slide()
+
+        v_def = MathTex(r'v = \frac{\Delta x}{\Delta t}')
+        self.play(Create(v_def))
+        self.next_slide()
